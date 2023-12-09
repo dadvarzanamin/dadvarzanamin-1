@@ -100,9 +100,21 @@ class SubmenuController extends Controller
             if($request->input('keyword')) {
                 $submenus->keyword = json_encode(explode("،", $request->input('keyword')));
             }
+            if($request->input('menu_id') == 61) {
+                $submenus->class  = 'departmandaavi';
+            }elseif($request->input('menu_id') == 62) {
+                $submenus->class  = 'departmangharardad';
+            }elseif($request->input('menu_id') == 63){
+                $submenus->class  = 'departmanamoozesh';
+            }elseif($request->input('menu_id') == 64){
+                $submenus->class  = 'service';
+            }elseif($request->input('menu_id') == 65){
+                $submenus->class  = 'akhbar';
+            }
             $submenus->description      = $request->input('description');
             $submenus->footer_show      = $request->input('footer_show');
             $submenus->status           = $request->input('status');
+            $submenus->route_active     = 1;
             $submenus->user_id          = auth()->user()->id;
             if($request->hasfile('image')) {
                 $file = $request->file('image');

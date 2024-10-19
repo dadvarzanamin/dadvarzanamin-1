@@ -28,14 +28,13 @@ class ActiveCode extends Model
 
     public function scopeGenerateCode($query , $user)
     {
-        $user->activeCode()->delete();
 //        if($code = $this->getAliveCodeForUser($user)) {
 //            $code = $code->code;
 //        } else {
 //
 //        }
 
-       // $user->ActiveCode()->delete();
+        $user->activeCode()->delete();
 
         do {
             $code = mt_rand(100000, 999999);
@@ -52,7 +51,7 @@ class ActiveCode extends Model
 
     private function checkCodeIsUnique($user, int $code)
     {
-        return !! $user->ActiveCode()->whereCode($code)->first();
+        return !! $user->activeCode()->whereCode($code)->first();
     }
 
     private function getAliveCodeForUser($user)
